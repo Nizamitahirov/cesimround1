@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databyte | Round 1: Engineering the Turnaround</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Theme (Default) - Cesim Inspired */
+            --bg: #0E1218;
+            --bg-alt: #1D2A3B;
+            --text: #FFFFFF;
+            --text-muted: #A3B3C9;
+            --cesim-red: #E6332A;
+            --cesim-blue: #0072CE;
+            --cesim-gradient: linear-gradient(135deg, var(--cesim-blue), var(--cesim-red));
+            --glass-bg: rgba(29, 42, 59, 0.8);
+            --border-color: rgba(163, 179, 201, 0.2);
+            --shadow: rgba(0, 0, 0, 0.2);
+
+            /* Light Theme - Cesim Inspired */
+            --light-bg: #F7F8FA;
+            --light-bg-alt: #FFFFFF;
+            --light-text: #1D2A3B;
+            --light-text-muted: #5A6472;
+            --light-glass-bg: rgba(255, 255, 255, 0.8);
+            --light-border-color: #E4E7EB;
+            --light-shadow: rgba(29, 42, 59, 0.08);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--light-bg);
+            --bg-alt: var(--light-bg-alt);
+            --text: var(--light-text);
+            --text-muted: var(--light-text-muted);
+            --glass-bg: var(--light-glass-bg);
+            --border-color: var(--light-border-color);
+            --shadow: var(--light-shadow);
+        }
+
+        /* --- Base & Typography --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+        
+        .full-width-container { width: 100%; max-width: 100%; }
+        .content-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        .section { width: 100%; padding: 8rem 0; }
+        .bg-alt { background-color: var(--bg-alt); }
+        
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--cesim-gradient);
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+        
+        p { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        b { color: var(--text); font-weight: 600; }
+        [data-theme="light"] b { color: var(--cesim-blue); }
+
+        /* --- Header --- */
+        .header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            transition: all 0.4s ease;
+            padding: 1rem 0;
+        }
+        .header.scrolled {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 0;
+        }
+        .header .content-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--text); 
+            text-decoration: none; 
+            z-index: 1001;
+        }
+        
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .nav { 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        .nav-link { 
+            text-decoration: none; 
+            color: var(--text-muted); 
+            font-weight: 600; 
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cesim-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active { 
+            color: var(--text); 
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .controls { display: flex; align-items: center; gap: 1rem; }
+        .controls button {
+            background: transparent; 
+            border: 1px solid var(--border-color);
+            color: var(--text-muted); 
+            width: 40px; 
+            height: 40px;
+            border-radius: 50%; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .controls button:hover { 
+            border-color: var(--cesim-blue); 
+            color: var(--cesim-blue); 
+            transform: rotate(10deg);
+        }
+        .icon-dark { display: none; }
+        [data-theme="dark"] .icon-light { display: none; }
+        [data-theme="dark"] .icon-dark { display: block; }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* --- Hero Section --- */
+        .hero { 
+            position: relative; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            overflow: hidden;
+        }
+        
+        .hero-video { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transform: translate(-50%, -50%); 
+            z-index: -2; 
+        }
+        
+        .hero-overlay { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(to bottom, rgba(14, 18, 24, 0.8), rgba(29, 42, 59, 0.9)); 
+            z-index: -1; 
+        }
+        
+        [data-theme="light"] .hero-overlay {
+            background: linear-gradient(to bottom, rgba(247, 248, 250, 0.8), rgba(255, 255, 255, 0.9));
+        }
+        
+        .hero-content { 
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        
+        .hero-content h1 { 
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem); 
+            font-weight: 700; 
+            margin-bottom: 1.5rem; 
+            color: #FFFFFF; 
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        [data-theme="light"] .hero-content h1 { color: var(--text); }
+        
+        .hero-content p { 
+            font-size: clamp(1.25rem, 3vw, 1.5rem); 
+            color: rgba(255, 255, 255, 0.9); 
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+        
+        [data-theme="light"] .hero-content p { color: var(--text-muted); }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--cesim-gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 114, 206, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 114, 206, 0.4);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* --- Mission Section & Layouts --- */
+        .mission-content { 
+            max-width: 900px; 
+            text-align: center; 
+            margin: 0 auto;
+        }
+        
+        .mission-content .section-title { margin-bottom: 3rem; }
+
+        .two-column-layout { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            align-items: center; 
+            gap: 5rem; 
+        }
+        
+        .column-icon { 
+            color: var(--cesim-blue); 
+            text-align: center;
+            font-size: 6rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .column-icon.reverse { order: -1; }
+        
+        .column-text .section-title { 
+            text-align: left; 
+            margin-bottom: 2.5rem; 
+        }
+        
+        .column-text .section-title:after {
+            margin: 1.5rem 0 0;
+        }
+        
+        .column-text ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 2rem 0; 
+        }
+        
+        .column-text ul li { 
+            position: relative; 
+            padding-left: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .column-text ul li::before {
+            content: '✓'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--cesim-red);
+            font-weight: 700; 
+            font-size: 1.5rem;
+        }
+        
+        .column-text p:not(:last-child) { margin-bottom: 1.5rem; }
+
+        /* --- Card Grid (Strategy) --- */
+        .card-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2.5rem; 
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background-color: var(--bg-alt); 
+            border: 1px solid var(--border-color);
+            padding: 3rem 2rem; 
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--cesim-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 35px var(--shadow); 
+        }
+        
+        .card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .card-icon { 
+            color: var(--cesim-red); 
+            margin-bottom: 1.5rem; 
+            font-size: 2.5rem;
+        }
+        
+        .card h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem; 
+            color: var(--text); 
+            font-family: 'Sora', sans-serif;
+        }
+        
+        .card p {
+            font-size: 1.05rem;
+        }
+
+        /* --- Accordion (Decisions) --- */
+        .accordion { 
+            max-width: 1000px; 
+            margin: 3rem auto 0; 
+        }
+        
+        .accordion-item { 
+            border-bottom: 1px solid var(--border-color); 
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-alt);
+        }
+        
+        .accordion-button {
+            background: var(--bg-alt); 
+            border: none; 
+            width: 100%; 
+            text-align: left;
+            padding: 1.5rem 2rem; 
+            font-size: 1.25rem; 
+            font-weight: 600;
+            color: var(--text); 
+            cursor: pointer;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            font-family: 'Sora', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-button:hover {
+            background: rgba(0, 114, 206, 0.1);
+        }
+        
+        .accordion-button::after {
+            content: '+'; 
+            font-size: 2rem; 
+            color: var(--cesim-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-button::after { 
+            content: '−';
+            transform: rotate(0);
+        }
+        
+        .accordion-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.5s ease; 
+        }
+        
+        .accordion-content p { 
+            padding: 0 2rem 2rem; 
+            line-height: 1.8; 
+            margin: 0;
+        }
+
+        /* --- Results --- */
+        .results-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2.5rem; 
+            margin: 4rem 0; 
+        }
+        
+        .result-item { 
+            background: var(--bg-alt); 
+            padding: 2.5rem 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--border-color); 
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+        
+        .result-item h4 { 
+            font-size: 1.25rem; 
+            color: var(--cesim-red); 
+            margin-bottom: 1rem; 
+            font-family: 'Sora', sans-serif;
+        }
+        
+        .result-icon {
+            font-size: 2.5rem;
+            color: var(--cesim-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .conclusion-text { 
+            text-align: center; 
+            max-width: 900px; 
+            margin: 4rem auto 0; 
+            padding: 3rem;
+            background: var(--bg-alt);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .conclusion-text h3 { 
+            font-size: 2rem; 
+            color: var(--text); 
+            margin-bottom: 1.5rem;
+            font-family: 'Sora', sans-serif;
+        }
+        
+        .conclusion-text ul { 
+            list-style: none; 
+            padding: 0; 
+            margin-top: 1rem; 
+            text-align: left; 
+            display: inline-block; 
+        }
+        
+        .conclusion-text ul li { 
+            position: relative; 
+            padding-left: 2rem; 
+            margin-bottom: 1rem; 
+        }
+        
+        .conclusion-text ul li::before { 
+            content: '→'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--cesim-red); 
+            font-weight: 700; 
+        }
+
+        /* --- Footer --- */
+        .footer { 
+            background-color: var(--bg); 
+            border-top: 1px solid var(--border-color); 
+            padding: 3rem 0;
+        }
+        
+        .footer .content-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            color: var(--text-muted); 
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cesim-blue);
+        }
+
+        /* --- Animations --- */
+        .animate-on-scroll { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        }
+        
+        .animate-on-scroll.is-visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .card.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .card.animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+
+        /* --- Stats Section --- */
+        .stats-section {
+            background: var(--cesim-gradient);
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Sora', sans-serif;
+        }
+        
+        .stat-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* --- Improved Layout for Summary and Intro Sections --- */
+        .icon-top-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .icon-top-container {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .icon-top {
+            font-size: 5rem;
+            color: var(--cesim-blue);
+            padding: 1.5rem;
+            border-radius: 50%;
+            background: rgba(0, 114, 206, 0.1);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .full-width-text {
+            width: 100%;
+            text-align: left;
+        }
+        
+        .full-width-text .section-title {
+            text-align: center;
+        }
+        
+        .full-width-text ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 2rem 0; 
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .full-width-text ul li { 
+            position: relative; 
+            padding-left: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .full-width-text ul li::before {
+            content: '✓'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--cesim-red);
+            font-weight: 700; 
+            font-size: 1.5rem;
+        }
+        
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .two-column-layout {
+                gap: 3rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .nav { 
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .two-column-layout { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 3rem;
+            }
+            
+            .column-icon.reverse { order: 0; }
+            
+            .column-text .section-title { 
+                text-align: center; 
+            }
+            
+            .column-text .section-title:after {
+                margin: 1.5rem auto 0;
+            }
+            
+            .footer .content-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+            
+            .icon-top {
+                font-size: 4rem;
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .content-container {
+                padding: 0 1.5rem;
+            }
+            
+            .section {
+                padding: 5rem 0;
+            }
+            
+            .hero-content h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .icon-top {
+                font-size: 3rem;
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="content-container">
+            <a href="#hero" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7V17M8 4V20M12 9V15M16 6V18M20 11V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Databyte</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="#summary" class="nav-link" data-lang-key="nav_summary">Summary</a>
+                <a href="#strategy" class="nav-link" data-lang-key="nav_strategy">Strategy</a>
+                <a href="#decisions" class="nav-link" data-lang-key="nav_decisions">Decisions</a>
+                <a href="#results" class="nav-link" data-lang-key="nav_results">Results</a>
+            </nav>
+            <div class="controls">
+                <button id="lang-switch" title="Change Language">AZ</button>
+                <button id="theme-switch" title="Toggle Theme">
+                    <svg class="icon-light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero full-width-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-loop-30373-large.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="content-container hero-content">
+                <div class="animate-on-scroll">
+                    <h1 data-lang-key="hero_title">Engineering the Turnaround</h1>
+                    <p data-lang-key="hero_subtitle">Databyte's Strategic Debrief for Mobilé Inc. — Round 1</p>
+                    <a href="#summary" class="cta-button">Explore Strategy</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+        
+        <section class="stats-section full-width-container">
+            <div class="content-container">
+                <div class="stats-grid">
+                    <div class="stat-item animate-on-scroll">
+                        <h3>$694M</h3>
+                        <p>Cash Reserve</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>4</h3>
+                        <p>New Plants in Asia</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>100%</h3>
+                        <p>US Production Capacity</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>4</h3>
+                        <p>Tech 1 Features</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="case-summary" class="section bg-alt full-width-container">
+            <div class="content-container mission-content animate-on-scroll">
+                <h2 class="section-title" data-lang-key="case_title">Case Summary</h2>
+                <p data-lang-key="case_desc">The US Department of Justice has dismantled a long-standing cartel in the mobile handset industry, forcing all major manufacturers, including Mobilé Inc., to replace their top management. The years of collusion resulted in technological stagnation and artificially high prices. As the new leadership, Team Databyte is tasked with navigating this newly competitive landscape. We start with a strong financial position but face the immense challenge of fostering innovation, optimizing a global supply chain, and competing aggressively across US, European, and Asian markets to maximize shareholder value.</p>
+            </div>
+        </section>
+
+        <section id="summary" class="section full-width-container">
+            <div class="content-container">
+                <div class="icon-top-layout animate-on-scroll">
+                    <div class="icon-top-container">
+                        <div class="icon-top">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="full-width-text">
+                        <h2 class="section-title" data-lang-key="summary_title">Executive Summary</h2>
+                        <p data-lang-key="summary_p1">This report details the foundational strategic decisions executed by Team Databyte for Mobilé Inc. in Round 1. Our approach was built on three pillars: <strong>Financial Fortification, Product Supremacy, and Strategic Expansion.</strong></p>
+                        <p data-lang-key="summary_p2">We addressed a critical liquidity crisis by securing $700 million in long-term debt to eliminate all high-cost emergency loans. Operationally, we focused all resources on a technologically superior "Tech 1" product with 4 features, after data analysis revealed "Tech 2" to be unviable this round.</p>
+                        <p data-lang-key="summary_p3">As a result, Mobilé Inc. was transformed from a financially vulnerable entity into a stable, globally-poised competitor with a <strong>$694 million cash reserve</strong> and a market-leading product.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="intro" class="section bg-alt full-width-container">
+            <div class="content-container">
+                <div class="icon-top-layout animate-on-scroll">
+                    <div class="icon-top-container">
+                        <div class="icon-top">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    </div>
+                    <div class="full-width-text">
+                        <h2 class="section-title" data-lang-key="intro_title">A New Reality and Our Mission</h2>
+                        <p data-lang-key="intro_p1">We took the helm of Mobilé Inc. at a historic crossroads. The challenge was not merely to maintain the status quo—a product of a non-competitive market—but to fundamentally rebuild the company's culture and operations around three core principles:</p>
+                        <ul>
+                            <li data-lang-key="intro_li1"><b>Agility:</b> To build an organization capable of reacting instantly to market shifts.</li>
+                            <li data-lang-key="intro_li2"><b>Innovation:</b> To embed product development into the company's DNA.</li>
+                            <li data-lang-key="intro_li3"><b>Efficiency:</b> To optimize every operational process to minimize costs and maximize profit.</li>
+                        </ul>
+                        <p data-lang-key="intro_p2">Our sole objective is to maximize long-term cumulative shareholder return. This report details the first, decisive steps toward that goal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy" class="section full-width-container">
+            <div class="content-container">
+                <h2 class="section-title animate-on-scroll" data-lang-key="strategy_title">The 3-Pillar Strategic Framework</h2>
+                <div class="card-grid">
+                    <div class="card animate-on-scroll">
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 data-lang-key="pillar1_title">Financial Fortification</h3>
+                        <p data-lang-key="pillar1_desc">Avert the immediate cash crisis in the US headquarters to create a stable foundation for growth and investment.</p>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <div class="card-icon"><i class="fas fa-crown"></i></div>
+                        <h3 data-lang-key="pillar2_title">Product Supremacy</h3>
+                        <p data-lang-key="pillar2_desc">Compete on value, not just price. Establish our product as the market's most advanced and desirable option from day one.</p>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <div class="card-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                        <h3 data-lang-key="pillar3_title">Strategic Expansion</h3>
+                        <p data-lang-key="pillar3_desc">Transform our biggest weakness—an inefficient supply chain—into a powerful competitive advantage through a bold, long-term investment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="decisions" class="section bg-alt full-width-container">
+            <div class="content-container">
+                <h2 class="section-title animate-on-scroll" data-lang-key="decisions_title">Deep Dive: Our Rationale</h2>
+                <div class="accordion">
+                    <div class="accordion-item animate-on-scroll">
+                        <button class="accordion-button" data-lang-key="decision1_title">Market Analysis & R&D</button>
+                        <div class="accordion-content">
+                            <p data-lang-key="decision1_desc"><b>Decision:</b> We focused all sales efforts on "Tech 1" and rejected "Tech 2" for this round. We immediately licensed 2 new features for both technologies and initiated in-house development for a future "Tech 2" feature.<br><br><b>Rationale:</b> While market sentiment was high for "Tech 2," hard data from network coverage graphs showed 0% availability. This data-driven approach prevented a catastrophic inventory surplus. Our dual R&D strategy provided an immediate competitive edge with a superior "Tech 1" product, prepared a dominant "Tech 2" for the next round, and invested in long-term cost reduction.</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item animate-on-scroll">
+                        <button class="accordion-button" data-lang-key="decision2_title">Marketing & Production</button>
+                        <div class="accordion-content">
+                            <p data-lang-key="decision2_desc"><b>Decision:</b> We launched "Tech 1" with all 4 available features across all markets. We set a premium price in the US/Europe and a more aggressive, market-share-oriented price in Asia. Production in the US was maximized at 100% capacity.<br><br><b>Rationale:</b> By offering a 4-feature product when competitors likely offered the standard 2, we immediately established a premium brand image. The tailored pricing strategy allowed us to convert this added value into revenue in mature markets while aggressively capturing customers in the high-growth Asian market. Maximizing in-house production was key to benefiting from the learning curve effect.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item animate-on-scroll">
+                        <button class="accordion-button" data-lang-key="decision3_title">The Game-Changing Investment</button>
+                        <div class="accordion-content">
+                            <p data-lang-key="decision3_desc"><b>Decision:</b> After stabilizing finances, we committed significant capital to begin construction of 4 new production plants in Asia (China).<br><br><b>Rationale:</b> This was the most critical decision of the round. Our analysis identified the $27 per-unit export cost to Asia as our biggest profit drain. This investment will not only eliminate that cost but also create a more efficient global supply chain, with cheaper export routes to Europe and allowing our US facilities to focus solely on the domestic market. It transforms our greatest weakness into a formidable strength.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item animate-on-scroll">
+                        <button class="accordion-button" data-lang-key="decision4_title">Financial Restructuring</button>
+                        <div class="accordion-content">
+                             <p data-lang-key="decision4_desc"><b>Decision:</b> We secured $700 million in low-cost long-term debt to completely pay off over $660 million in high-interest emergency short-term debt. We also used transfer pricing to optimize our tax burden. We paid zero dividends.<br><br><b>Rationale:</b> Paying dividends while on the verge of bankruptcy would have been irresponsible. Our decision was to save the company. The new debt not only cleaned our balance sheet of toxic, high-cost loans but also provided the "war chest" needed to fund our strategic investment in Asia. Every dollar was reinvested into building a more valuable company for the long term.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="section full-width-container">
+            <div class="content-container">
+                <h2 class="section-title animate-on-scroll" data-lang-key="results_title">Round 1 Results: A Foundation for Dominance</h2>
+                <div class="results-grid animate-on-scroll">
+                    <div class="result-item">
+                        <div class="result-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <h4 data-lang-key="result1_title">Financial Health</h4>
+                        <p data-lang-key="result1_desc">From a critical cash deficit to a robust <b>$694 million</b> cash reserve. All emergency debts have been eliminated.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h4 data-lang-key="result2_title">Market Position</h4>
+                        <p data-lang-key="result2_desc">Established a strong claim to technological leadership with a market-leading <b>4-feature "Tech 1" product</b>.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon"><i class="fas fa-flask"></i></div>
+                        <h4 data-lang-key="result3_title">Strategic Readiness</h4>
+                        <p data-lang-key="result3_desc">A dominant <b>"Tech 2" product is ready</b> for a powerful market entry in the next round.</p>
+                    </div>
+                     <div class="result-item">
+                        <div class="result-icon"><i class="fas fa-globe-asia"></i></div>
+                        <h4 data-lang-key="result4_title">Future Outlook</h4>
+                        <p data-lang-key="result4_desc">The foundation has been laid for our <b>Asian manufacturing hubs</b>, securing future profitability and efficiency.</p>
+                    </div>
+                </div>
+                <div class="conclusion-text animate-on-scroll">
+                    <h3 data-lang-key="conclusion_title">The Future is Clear: We Are On The Attack.</h3>
+                     <p data-lang-key="conclusion_p1">Our goals for Round 2 are clear: dominate the market with our superior "Tech 2" product, monitor the construction of our Asian plants, and maintain financial discipline while exploring new growth opportunities with our substantial cash reserve. The foundation is set. Now, we build the empire.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer full-width-container">
+        <div class="content-container">
+            <p>© 2025 Team Databyte | Cesim Global Challenge</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- TRANSLATION DATA ---
+            const translations = {
+                en: {
+                    nav_summary: "Summary",
+                    nav_strategy: "Strategy",
+                    nav_decisions: "Decisions",
+                    nav_results: "Results",
+                    hero_title: "Engineering the Turnaround",
+                    hero_subtitle: "Databyte's Strategic Debrief for Mobilé Inc. — Round 1",
+                    case_title: "Case Summary",
+                    case_desc: "The US Department of Justice has broken up a long-standing cartel in the mobile handset industry. This forced all major companies, including Mobilé Inc., to replace their top management. Years of secret agreements led to slow innovation and high prices. As the new leaders, Team Databyte must now guide the company in a highly competitive market. We start with a good financial position but face big challenges: we need to innovate, improve our global supply chain, and compete hard in the US, Europe, and Asia to create the most value for our shareholders.",
+                    summary_title: "Executive Summary",
+                    summary_p1: "This report explains the key strategic decisions Team Databyte made for Mobilé Inc. in Round 1. Our approach was based on three main ideas: **Fixing Our Finances, Creating a Superior Product, and Expanding Strategically.**",
+                    summary_p2: "We solved a serious cash shortage at our US headquarters by taking a $700 million long-term loan to pay off all expensive emergency debts. On the product side, we carefully analyzed market data and saw that 'Tech 2' was not a viable option this round. So, we put all our effort into making a superior 'Tech 1' phone with 4 features. Our most important decision was to start building 4 new factories in Asia (China). This will fix our inefficient supply chain and give us a major advantage in the future.",
+                    summary_p3: "Because of these actions, Mobilé Inc. went from being financially unstable to a strong global competitor with a **$694 million cash reserve** and a top-quality product on the market.",
+                    intro_title: "A New Reality and Our Mission",
+                    intro_p1: "We took control of Mobilé Inc. at a critical time. The end of the industry cartel created both great risks and great opportunities. Our job was not just to keep things the same, but to completely change the company’s culture and operations based on three principles:",
+                    intro_li1: "<b>Agility:</b> To build a company that can react quickly to market changes.",
+                    intro_li2: "<b>Innovation:</b> To make product development a central part of our company's identity.",
+                    intro_li3: "<b>Efficiency:</b> To improve all our operations to lower costs and increase profits.",
+                    intro_p2: "Our only goal is to maximize long-term shareholder value. This report shows the first important steps we took to achieve this.",
+                    strategy_title: "Our 3-Pillar Strategic Framework",
+                    pillar1_title: "Financial Fortification",
+                    pillar1_desc: "Before making any other moves, we had to secure the company's finances. The cash crisis in the US was a threat to all our plans, so our first priority was to fix it.",
+                    pillar2_title: "Product Supremacy",
+                    pillar2_desc: "Competing on price is a losing game. We chose a different path. From day one, we wanted the Mobilé Inc. brand to be known for innovation and quality.",
+                    pillar3_title: "Strategic Expansion",
+                    pillar3_desc: "Our analysis showed that the supply chain was our biggest weakness. The high cost of exporting to Asia was limiting our growth. We made a bold investment to fix this.",
+                    decisions_title: "A Deep Dive into Our Decisions",
+                    decision1_title: "Market Analysis & R&D",
+                    decision1_desc: "<b>Decision:</b> We focused all sales on 'Tech 1' and ignored 'Tech 2' for this round. We immediately licensed 2 new features for both technologies and started in-house R&D on a future 'Tech 2' feature.<br><br><b>Reasoning:</b> The market was excited about 'Tech 2,' but the data showed that its network coverage was 0%. This fact-based decision saved us from having a huge amount of unsold products. Our R&D strategy gave us a better 'Tech 1' product now, prepared us to launch a great 'Tech 2' product next round, and will help reduce our costs in the long run.",
+                    decision2_title: "Marketing & Production",
+                    decision2_desc: "<b>Decision:</b> We launched our 'Tech 1' phone with all 4 available features in every market. We charged a higher price in the US and Europe but a lower, more competitive price in Asia. We ran our US factory at 100% capacity.<br><br><b>Reasoning:</b> Offering a 4-feature phone immediately made our product look more valuable than competitors' standard phones. Our pricing strategy helped us earn more in developed markets while gaining many new customers in the fast-growing Asian market. Running our factory at full capacity helps lower the cost of each phone over time.",
+                    decision3_title: "The Game-Changing Investment",
+                    decision3_desc: "<b>Decision:</b> After securing our finances, we invested a large amount of cash to start building 4 new factories in Asia (China).<br><br><b>Reasoning:</b> This was our most important decision. Our analysis showed that the $27 per-phone cost to export to Asia was our biggest problem. This investment will remove that cost completely. It will also give us a cheaper way to export to Europe and allow our US factory to focus on the American market. This turns our biggest weakness into a major strength.",
+                    decision4_title: "Financial Restructuring",
+                    decision4_desc: "<b>Decision:</b> We took a $700 million low-cost, long-term loan to pay off over $660 million in expensive emergency debt. We also used transfer pricing to lower our taxes. We did not pay any dividends.<br><br><b>Reasoning:</b> It would have been irresponsible to pay dividends when the company was close to bankruptcy. Our goal was to save the company. The new loan not only cleared our expensive debts but also gave us the cash we needed for our investment in Asia. Every dollar was used to build a more valuable company for the future.",
+                    results_title: "Round 1 Results: A Foundation for Dominance",
+                    result1_title: "Financial Health",
+                    result1_desc: "We went from a critical cash shortage to a strong <b>$694 million</b> cash reserve. All emergency debts were paid off.",
+                    result2_title: "Market Position",
+                    result2_desc: "We are now seen as a technology leader thanks to our market-leading <b>4-feature 'Tech 1' product</b>.",
+                    result3_title: "Strategic Readiness",
+                    result3_desc: "Our strong <b>'Tech 2' product is ready</b> for a powerful launch in the next round.",
+                    result4_title: "Future Outlook",
+                    result4_desc: "We have started building our <b>Asian factories</b>, which will secure our future profits and efficiency.",
+                    conclusion_title: "The Future is Clear: We Are On The Attack.",
+                    conclusion_p1: "Our goals for Round 2 are clear: to lead the market with our superior 'Tech 2' product, oversee the construction of our Asian factories, and use our large cash reserve to find new growth opportunities while being financially smart. The foundation is set. Now, we build the empire."
+                },
+                az: {
+                    nav_summary: "Xülasə", nav_strategy: "Strategiya", nav_decisions: "Qərarlar", nav_results: "Nəticələr",
+                    hero_title: "Dönüşü Mühəndisləşdirmək", hero_subtitle: "Databyte-ın Mobilé Inc. üçün Strateji Hesabatı — 1-ci Raund",
+                    case_title: "Keysin Xülasəsi",
+                    case_desc: "ABŞ Ədliyyə Nazirliyi mobil telefon sənayesində uzun müddətdir davam edən bir karteli ləğv edərək, Mobilé Inc. daxil olmaqla bütün əsas istehsalçıları yüksək rəhbərliyini dəyişdirməyə məcbur etdi. İllərlə davam edən sövdələşmə texnoloji durğunluq və süni yüksək qiymətlərlə nəticələnmişdi. Yeni rəhbərlik olaraq Databyte komandasına bu yeni rəqabətli mühitdə yol tapmaq tapşırılıb. Biz güclü maliyyə mövqeyindən başlayırıq, lakin innovasiyanı təşviq etmək, qlobal təchizat zəncirini optimallaşdırmaq və səhmdar dəyərini maksimuma çatdırmaq üçün ABŞ, Avropa və Asiya bazarlarında aqressiv rəqabət aparmaq kimi böyük bir problemlə üzləşirik.",
+                    summary_title: "İcra Xülasəsi",
+                    summary_p1: "Bu hesabat, Databyte Komandasının 1-ci Raundda Mobilé Inc. üçün həyata keçirdiyi təməl strateji qərarları təfərrüatlandırır. Yanaşmamız üç sütun üzərində qurulmuşdur: **Maliyyə Möhkəmləndirilməsi, Məhsul Üstünlüyü və Strateji Genişlənmə.**",
+                    summary_p2: "ABŞ-dakı baş ofisdəki kritik likvidlik böhranını, bütün yüksək xərcli təcili kreditləri ləğv etmək üçün 700 milyon dollarlıq ucuz, uzunmüddətli borc təmin edərək həll etdik. Əməliyyat baxımından, məlumat təhlili 'Tech 2'-nin bu raundda yararsız olduğunu ortaya qoyduqdan sonra, bütün resursları 4 xüsusiyyətlə təchiz edilmiş üstün bir 'Tech 1' məhsuluna yönəltdik. Raundun ən həlledici addımı, ən böyük zəifliyimizi – səmərəsiz bir təchizat zəncirini – uzunmüddətli bir rəqabət üstünlüyünə çevirmək üçün Asiyada (Çin) 4 yeni zavodun tikintisinə başlamaq oldu.",
+                    summary_p3: "Nəticədə, Mobilé Inc. maliyyə cəhətdən həssas bir qurumdan, **694 milyon dollarlıq nağd pul ehtiyatına** və bazarda lider bir məhsula sahib, qlobal səviyyədə rəqabətə hazır bir şirkətə çevrildi.",
+                    intro_title: "Yeni Reallıq və Missiyamız",
+                    intro_p1: "Mobilé Inc.-i tarixi bir yol ayrıcında təhvil aldıq. Məqsəd sadəcə status-kvonu qorumaq deyil, şirkətin mədəniyyətini və əməliyyatlarını üç əsas prinsip ətrafında kökündən yenidən qurmaq idi:",
+                    intro_li1: "<b>Çeviklik:</b> Bazar dəyişikliklərinə dərhal reaksiya verə bilən bir təşkilat qurmaq.",
+                    intro_li2: "<b>İnnovasiya:</b> Məhsul inkişafını şirkətin DNT-sinə yerləşdirmək.",
+                    intro_li3: "<b>Səmərəlilik:</b> Xərcləri minimuma endirmək və mənfəəti maksimuma çatdırmaq üçün hər bir prosesi optimallaşdırmaq.",
+                    intro_p2: "Yeganə məqsədimiz uzunmüddətli səhmdar gəlirliliyini maksimuma çatdırmaqdır. Bu hesabat, bu məqsədə doğru atılan ilk, həlledici addımları təfərrüatlandırır.",
+                    strategy_title: "3 Sütunlu Strateji Çərçivə",
+                    pillar1_title: "Maliyyə Möhkəmləndirilməsi",
+                    pillar1_desc: "Böyümə və investisiya üçün sabit bir təməl yaratmaq məqsədilə ABŞ-dakı ana şirkətdəki təcili nağd pul böhranının qarşısını almaq.",
+                    pillar2_title: "Məhsul Üstünlüyü",
+                    pillar2_desc: "Yalnız qiymətə deyil, dəyərə görə rəqabət aparmaq. Məhsulumuzu ilk gündən bazarın ən qabaqcıl və arzuolunan variantı kimi təqdim etmək.",
+                    pillar3_title: "Strateji Genişlənmə",
+                    pillar3_desc: "Ən böyük zəifliyimizi – səmərəsiz təchizat zəncirini – cəsarətli, uzunmüddətli bir investisiya ilə güclü bir rəqabət üstünlüyünə çevirmək.",
+                    decisions_title: "Dərin Təhlil: Qərarlarımızın Məntiqi",
+                    decision1_title: "Bazar Analizi və Ar-Ge",
+                    decision1_desc: "<b>Qərar:</b> Bütün satış səylərimizi 'Tech 1'-ə yönəltdik və bu raund üçün 'Tech 2'-ni rədd etdik. Hər iki texnologiya üçün dərhal 2 yeni xüsusiyyət lisenziyalaşdırdıq və gələcək bir 'Tech 2' xüsusiyyəti üçün daxili inkişafa başladıq.<br><br><b>Məntiq:</b> Bazar əhval-ruhiyyəsi 'Tech 2' üçün yüksək olsa da, şəbəkə əhatə dairəsi qrafiklərindən əldə edilən sərt məlumatlar 0% əlçatanlıq göstərdi. Məlumatlara əsaslanan bu yanaşma fəlakətli bir anbar artığının qarşısını aldı. İkili Ar-Ge strategiyamız üstün bir 'Tech 1' məhsulu ilə dərhal rəqabət üstünlüyü təmin etdi, növbəti raund üçün dominant bir 'Tech 2' hazırladı və uzunmüddətli xərclərin azaldılmasına sərmayə qoydu.",
+                    decision2_title: "Marketinq və İstehsalat",
+                    decision2_desc: "<b>Qərar:</b> 'Tech 1'-i bütün bazarlarda mövcud olan 4 xüsusiyyətlə bazara çıxardıq. ABŞ/Avropada premium qiymət, Asiyada isə daha aqressiv, bazar payı yönümlü bir qiymət təyin etdik. ABŞ-da istehsalat 100% gücü ilə maksimuma çatdırıldıq.<br><br><b>Məntiq:</b> Rəqiblərin çox güman ki, standart 2 xüsusiyyət təklif etdiyi bir vaxtda 4 xüsusiyyətli bir məhsul təklif edərək, dərhal premium bir marka imici yaratdıq. Fərdi qiymət strategiyası, bu əlavə dəyəri yetkin bazarlarda gəlirə çevirməyə imkan verərkən, yüksək böyüyən Asiya bölgəsində aqressiv şəkildə müştəriləri cəlb etməyə imkan verdi. Daxili istehsalatı maksimuma çatdırmaq, öyrənmə əyrisi effektindən faydalanmaq üçün açar idi.",
+                    decision3_title: "Oyunu Dəyişən İnvestisiya",
+                    decision3_desc: "<b>Qərar:</b> Maliyyəni sabitləşdirdikdən sonra, Asiyada (Çin) 4 yeni istehsal zavodunın tikintisinə başlamaq üçün əhəmiyyətli kapital ayırdıq.<br><br><b>Məntiq:</b> Bu, raundun ən kritik qərarı idi. Təhlilimiz vahid başına 27 dollarlıq ixrac xərcini ən böyük mənfəət itkimiz kimi müəyyən etdi. Bu investisiya yalnız bu xərci aradan qaldırmayacaq, həm də Avropaya daha ucuz ixrac marşrutları ilə daha səmərəli bir qlobal təchizat zənciri yaradacaq və ABŞ müəssisələrimizin yalnız daxili bazara fokuslanmasına imkan verəcək. Bu, ən böyük zəifliyimizi güclü bir gücə çevirir.",
+                    decision4_title: "Maliyyə Yenidənqurması",
+                    decision4_desc: "<b>Qərar:</b> 660 milyon dollardan çox yüksək faizli təcili qısamüddətli borcları tamamilə ödəmək üçün 700 milyon dollarlıq ucuz uzunmüddətli borc təmin etdik. Həmçinin vergi yükümüzü optimallaşdırmaq üçün transfer qiymətləndirməsindən istifadə etdik. Sıfır dividend ödədik.<br><br><b>Məntiq:</b> İflas astanasında dividend ödəmək məsuliyyətsizlik olardı. Qərarımız şirkəti xilas etmək idi. Yeni borc təkcə zəhərli, yüksək xərcli kreditlərdən balansımızı təmizləmədi, həm də strateji investisiyamızı maliyyələşdirmək üçün lazım olan 'döyüş sandığını' təmin etdi. Hər bir dollar uzunmüddətli perspektivdə daha dəyərli bir şirkət qurmaq üçün yenidən investasiya edildi.",
+                    results_title: "1-ci Raund Nəticələri: Dominantlıq üçün Təməl",
+                    result1_title: "Maliyyə Sağlamlığı", result1_desc: "Kritik nağd pul kəsirindən möhkəm bir <b>694 milyon dollarlıq</b> nağd pul ehtiyatına. Bütün təcili borclar ləğv edildi.",
+                    result2_title: "Bazar Mövqeyi", result2_desc: "Bazarın lideri olan <b>4 xüsusiyyətli 'Tech 1' məhsulu</b> ilə texnoloji liderliyə güclü bir iddia qoyuldu.",
+                    result3_title: "Strateji Hazırlıq", result3_desc: "Dominant bir <b>'Tech 2' məhsulu</b> növbəti raundda güclü bir bazar girişi üçün hazırdır.",
+                    result4_title: "Gələcəyə Baxış", result4_desc: "Gələcək mənfəətliliyi və səmərəliliyi təmin edən <b>Asiya istehsal mərkəzlərimizin</b> təməli qoyuldu.",
+                    conclusion_title: "Gələcək Aydındır: Biz Hücumdayıq.",
+                    conclusion_p1: "2-ci Raund üçün məqsədlərimiz aydındır: üstün 'Tech 2' məhsulumuzla bazarda dominantlıq etmək, Asiya zavodlarımızın tikintisinə nəzarət etmək və böyük nağd pul ehtiyatımızla yeni böyümə imkanlarını araşdırarkən maliyyə nizam-intizamını qorumaq. Təməl qurulub. İndi imperiyanı qurmaq vaxtıdır."
+                }
+            };
+
+            // --- State & Selectors ---
+            let currentLang = 'en';
+            const header = document.getElementById('header');
+            const langSwitch = document.getElementById('lang-switch');
+            const themeSwitch = document.getElementById('theme-switch');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const nav = document.getElementById('nav');
+            const translatableElements = document.querySelectorAll('[data-lang-key]');
+            const scrollAnimatedElements = document.querySelectorAll('.animate-on-scroll');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            // --- Functions ---
+            const setLanguage = (lang) => {
+                translatableElements.forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    el.innerHTML = translations[lang]?.[key] || translations['en'][key];
+                });
+                document.documentElement.lang = lang;
+                langSwitch.textContent = lang === 'en' ? 'AZ' : 'EN';
+            };
+
+            const applyTheme = (theme) => {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            };
+
+            const toggleMobileMenu = () => {
+                nav.classList.toggle('active');
+                if (nav.classList.contains('active')) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            };
+
+            // --- Observers ---
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.1 });
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' });
+            
+            // --- Event Listeners ---
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            langSwitch.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'az' : 'en';
+                setLanguage(currentLang);
+            });
+
+            themeSwitch.addEventListener('click', () => {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 900) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            accordionItems.forEach(item => {
+                const button = item.querySelector('.accordion-button');
+                const content = item.querySelector('.accordion-content');
+                
+                button.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    accordionItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+            
+            // --- Initializations ---
+            scrollAnimatedElements.forEach(el => animationObserver.observe(el));
+            sections.forEach(section => { if (section.id) navObserver.observe(section); });
+            
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(savedTheme);
+            setLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>

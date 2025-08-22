@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Databyte | Round 1: Engineering the Turnaround</title>
+    <title>Red | Red Team: Navigating Volatility</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,7 +141,9 @@
             width: 0;
             height: 2px;
             background: var(--cesim-gradient);
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
         
         .nav-link:hover, .nav-link.active { 
@@ -149,7 +151,7 @@
         }
         
         .nav-link:hover:after, .nav-link.active:after {
-            width: 100%;
+            transform: scaleX(1);
         }
         
         .controls { display: flex; align-items: center; gap: 1rem; }
@@ -777,7 +779,7 @@
         <div class="content-container">
             <a href="#hero" class="logo">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7V17M8 4V20M12 9V15M16 6V18M20 11V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Databyte</span>
+                <span>Red</span>
             </a>
             <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -806,8 +808,8 @@
             <div class="hero-overlay"></div>
             <div class="content-container hero-content">
                 <div class="animate-on-scroll">
-                    <h1 data-lang-key="hero_title">Engineering the Turnaround</h1>
-                    <p data-lang-key="hero_subtitle">Databyte's Strategic Debrief for Mobilé Inc. — Round 1</p>
+                    <h1 data-lang-key="hero_title">Engineering a Volatile Turnaround</h1>
+                    <p data-lang-key="hero_subtitle">Red's Strategic Debrief for Mobilé Inc. — Rounds 1-3</p>
                     <a href="#summary" class="cta-button">Explore Strategy</a>
                 </div>
             </div>
@@ -820,20 +822,20 @@
             <div class="content-container">
                 <div class="stats-grid">
                     <div class="stat-item animate-on-scroll">
-                        <h3>$694M</h3>
-                        <p>Cash Reserve</p>
+                        <h3>$2M</h3>
+                        <p>Cash Reserve (R3)</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
-                        <h3>4</h3>
-                        <p>New Plants in Asia</p>
+                        <h3>51.83%</h3>
+                        <p>Tech 2 Europe Mkt Share (R2/R3)</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
-                        <h3>100%</h3>
-                        <p>US Production Capacity</p>
+                        <h3>32.03%</h3>
+                        <p>Tech 2 Asia Mkt Share (R3)</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
-                        <h3>4</h3>
-                        <p>Tech 1 Features</p>
+                        <h3>$1.67B</h3>
+                        <p>Unplanned Debt (R3)</p>
                     </div>
                 </div>
             </div>
@@ -842,7 +844,7 @@
         <section id="case-summary" class="section bg-alt full-width-container">
             <div class="content-container mission-content animate-on-scroll">
                 <h2 class="section-title" data-lang-key="case_title">Case Summary</h2>
-                <p data-lang-key="case_desc">The US Department of Justice has dismantled a long-standing cartel in the mobile handset industry, forcing all major manufacturers, including Mobilé Inc., to replace their top management. The years of collusion resulted in technological stagnation and artificially high prices. As the new leadership, Team Databyte is tasked with navigating this newly competitive landscape. We start with a strong financial position but face the immense challenge of fostering innovation, optimizing a global supply chain, and competing aggressively across US, European, and Asian markets to maximize shareholder value.</p>
+                <p data-lang-key="case_desc">The US Department of Justice has dismantled a long-standing cartel in the mobile handset industry, forcing all major manufacturers, including Mobilé Inc., to replace their top management. The years of collusion resulted in technological stagnation and artificially high prices. As the new leadership for **Red Team**, we are tasked with navigating this newly competitive landscape. We inherited a challenging financial position but aim to foster innovation, optimize a global supply chain, and compete aggressively across US, European, and Asian markets to maximize shareholder value.</p>
             </div>
         </section>
 
@@ -856,9 +858,9 @@
                     </div>
                     <div class="full-width-text">
                         <h2 class="section-title" data-lang-key="summary_title">Executive Summary</h2>
-                        <p data-lang-key="summary_p1">This report details the foundational strategic decisions executed by Team Databyte for Mobilé Inc. in Round 1. Our approach was built on three pillars: <strong>Financial Fortification, Product Supremacy, and Strategic Expansion.</strong></p>
-                        <p data-lang-key="summary_p2">We addressed a critical liquidity crisis by securing $700 million in long-term debt to eliminate all high-cost emergency loans. Operationally, we focused all resources on a technologically superior "Tech 1" product with 4 features, after data analysis revealed "Tech 2" to be unviable this round.</p>
-                        <p data-lang-key="summary_p3">As a result, Mobilé Inc. was transformed from a financially vulnerable entity into a stable, globally-poised competitor with a <strong>$694 million cash reserve</strong> and a market-leading product.</p>
+                        <p data-lang-key="summary_p1">This report details the dynamic strategic decisions executed by the **Red Team** for Mobilé Inc. across Rounds 1-3. Our approach was built on three pillars: <b>Aggressive Market Penetration, Flexible Production Network, and Navigating Financial Volatility.</b></p>
+                        <p data-lang-key="summary_p2">In Round 1, **Red Team** faced a severe financial crisis with a <b>-$876 million net loss</b>, <b>-$146 million in total equity</b>, and only <b>$2 million cash</b>, burdened by <b>$1.25 billion in unplanned debt</b>. Despite this, we aggressively invested in product features and marketing. Round 2 saw a remarkable financial turnaround, achieving a <b>+$370 million net profit</b> and boosting total equity to <b>$2.07 billion</b>, with all emergency debt cleared. This enabled us to establish dominant market shares for Tech 2 in Europe (51.83%) and Asia (38.51%). However, Round 3 saw a relapse into financial instability, with cash again at <b>$2 million</b> and new unplanned debt of <b>$1.67 billion</b>, despite continued strong sales and market presence.</p>
+                        <p data-lang-key="summary_p3">**Red Team's** strategy consistently prioritized market capture and sales growth, often at the expense of immediate financial stability. We achieved impressive market dominance, but this came with recurring liquidity challenges. The ability to sustain leadership while stabilizing finances remains our critical ongoing challenge.</p>
                     </div>
                 </div>
             </div>
@@ -874,13 +876,13 @@
                     </div>
                     <div class="full-width-text">
                         <h2 class="section-title" data-lang-key="intro_title">A New Reality and Our Mission</h2>
-                        <p data-lang-key="intro_p1">We took the helm of Mobilé Inc. at a historic crossroads. The challenge was not merely to maintain the status quo—a product of a non-competitive market—but to fundamentally rebuild the company's culture and operations around three core principles:</p>
+                        <p data-lang-key="intro_p1">We took the helm of Mobilé Inc.'s **Red Team** at a historic crossroads. The end of the industry cartel created both great risks and great opportunities. Our mission was not merely to maintain the status quo—a product of a non-competitive market—but to fundamentally rebuild the company's culture and operations around three core principles:</p>
                         <ul>
-                            <li data-lang-key="intro_li1"><b>Agility:</b> To build an organization capable of reacting instantly to market shifts.</li>
-                            <li data-lang-key="intro_li2"><b>Innovation:</b> To embed product development into the company's DNA.</li>
-                            <li data-lang-key="intro_li3"><b>Efficiency:</b> To optimize every operational process to minimize costs and maximize profit.</li>
+                            <li data-lang-key="intro_li1"><b>Market Aggression:</b> To relentlessly pursue and capture leading market shares, especially in high-growth segments.</li>
+                            <li data-lang-key="intro_li2"><b>Production Flexibility:</b> To rapidly scale production to meet demand without heavy fixed asset investments.</li>
+                            <li data-lang-key="li3"><b>Financial Agility:</b> To manage capital dynamically, using debt to fuel growth while navigating inherent risks.</li>
                         </ul>
-                        <p data-lang-key="intro_p2">Our sole objective is to maximize long-term cumulative shareholder return. This report details the first, decisive steps toward that goal.</p>
+                        <p data-lang-key="intro_p2">Our sole objective is to maximize long-term cumulative shareholder return. This report details the initial, decisive steps and the ongoing challenges toward that goal for **Red Team**.</p>
                     </div>
                 </div>
             </div>
@@ -891,19 +893,19 @@
                 <h2 class="section-title animate-on-scroll" data-lang-key="strategy_title">The 3-Pillar Strategic Framework</h2>
                 <div class="card-grid">
                     <div class="card animate-on-scroll">
-                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3 data-lang-key="pillar1_title">Financial Fortification</h3>
-                        <p data-lang-key="pillar1_desc">Avert the immediate cash crisis in the US headquarters to create a stable foundation for growth and investment.</p>
+                        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                        <h3 data-lang-key="pillar1_title">Aggressive Market Penetration</h3>
+                        <p data-lang-key="pillar1_desc">Prioritize rapid market share acquisition, especially for Tech 2, leveraging competitive pricing and extensive promotional efforts to establish a dominant brand presence across all regions.</p>
                     </div>
                     <div class="card animate-on-scroll">
-                        <div class="card-icon"><i class="fas fa-crown"></i></div>
-                        <h3 data-lang-key="pillar2_title">Product Supremacy</h3>
-                        <p data-lang-key="pillar2_desc">Compete on value, not just price. Establish our product as the market's most advanced and desirable option from day one.</p>
+                        <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                        <h3 data-lang-key="pillar2_title">Flexible Production Network</h3>
+                        <p data-lang-key="pillar2_desc">Opt for a scalable production strategy, heavily utilizing contract manufacturing alongside existing in-house capacity to quickly adapt to demand fluctuations and minimize fixed asset investments.</p>
                     </div>
                     <div class="card animate-on-scroll">
-                        <div class="card-icon"><i class="fas fa-expand-arrows-alt"></i></div>
-                        <h3 data-lang-key="pillar3_title">Strategic Expansion</h3>
-                        <p data-lang-key="pillar3_desc">Transform our biggest weakness—an inefficient supply chain—into a powerful competitive advantage through a bold, long-term investment.</p>
+                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3 data-lang-key="pillar3_title">Navigating Financial Volatility</h3>
+                        <p data-lang-key="pillar3_desc">Employ agile financial management, including strategic debt utilization and cost optimization measures, to fund aggressive market growth and navigate recurring liquidity challenges.</p>
                     </div>
                 </div>
             </div>
@@ -914,27 +916,27 @@
                 <h2 class="section-title animate-on-scroll" data-lang-key="decisions_title">Deep Dive: Our Rationale</h2>
                 <div class="accordion">
                     <div class="accordion-item animate-on-scroll">
-                        <button class="accordion-button" data-lang-key="decision1_title">Market Analysis & R&D</button>
+                        <button class="accordion-button" data-lang-key="decision1_title">Market Focus & R&D Adjustments</button>
                         <div class="accordion-content">
-                            <p data-lang-key="decision1_desc"><b>Decision:</b> We focused all sales efforts on "Tech 1" and rejected "Tech 2" for this round. We immediately licensed 2 new features for both technologies and initiated in-house development for a future "Tech 2" feature.<br><br><b>Rationale:</b> While market sentiment was high for "Tech 2," hard data from network coverage graphs showed 0% availability. This data-driven approach prevented a catastrophic inventory surplus. Our dual R&D strategy provided an immediate competitive edge with a superior "Tech 1" product, prepared a dominant "Tech 2" for the next round, and invested in long-term cost reduction.</p>
+                            <p data-lang-key="decision1_desc"><b>Decision:</b> **Red Team** aggressively pursued market penetration for Tech 2 from Round 1, despite initial network limitations, and maintained strong Tech 1 offerings. R&D efforts focused on feature licensing, complemented by significant cost reductions, including substantial R&D layoffs in Round 2.<br><br><b>Rationale:</b> While initial data showed Tech 2's network limitations in R1, we believed in its long-term potential, choosing to invest aggressively in its development and market presence. The large R&D layoffs in R2 (55.80% turnover) were a drastic but necessary measure to reduce fixed costs and free up capital to fund aggressive marketing and production, reflecting a high-risk approach to prioritize immediate market capture over long-term in-house innovation capacity.</p>
                         </div>
                     </div>
                      <div class="accordion-item animate-on-scroll">
-                        <button class="accordion-button" data-lang-key="decision2_title">Marketing & Production</button>
+                        <button class="accordion-button" data-lang-key="decision2_title">Aggressive Marketing & Production Strategy</button>
                         <div class="accordion-content">
-                            <p data-lang-key="decision2_desc"><b>Decision:</b> We launched "Tech 1" with all 4 available features across all markets. We set a premium price in the US/Europe and a more aggressive, market-share-oriented price in Asia. Production in the US was maximized at 100% capacity.<br><br><b>Rationale:</b> By offering a 4-feature product when competitors likely offered the standard 2, we immediately established a premium brand image. The tailored pricing strategy allowed us to convert this added value into revenue in mature markets while aggressively capturing customers in the high-growth Asian market. Maximizing in-house production was key to benefiting from the learning curve effect.</p>
+                            <p data-lang-key="decision2_desc"><b>Decision:</b> We launched Tech 2 with competitive pricing and significant promotional spend, especially in Europe and Asia, to rapidly gain market share. Production relied heavily on a mixed model, combining in-house manufacturing (e.g., USA Tech 1) with extensive contract manufacturing (e.g., USA Tech 2 and Tech 1 contract manufacturing).<br><br><b>Rationale:</b> The primary objective was to quickly establish market dominance. Aggressive pricing and promotion captured significant customer segments, particularly for Tech 2. The flexible production strategy, with a strong reliance on contract manufacturing, allowed us to rapidly scale production to meet the surging demand for Tech 2 across regions without committing to large fixed asset investments, enabling a rapid response to market opportunities.</p>
                         </div>
                     </div>
                     <div class="accordion-item animate-on-scroll">
-                        <button class="accordion-button" data-lang-key="decision3_title">The Game-Changing Investment</button>
+                        <button class="accordion-button" data-lang-key="decision3_title">Production Network: Flexibility over Fixed Assets</button>
                         <div class="accordion-content">
-                            <p data-lang-key="decision3_desc"><b>Decision:</b> After stabilizing finances, we committed significant capital to begin construction of 4 new production plants in Asia (China).<br><br><b>Rationale:</b> This was the most critical decision of the round. Our analysis identified the $27 per-unit export cost to Asia as our biggest profit drain. This investment will not only eliminate that cost but also create a more efficient global supply chain, with cheaper export routes to Europe and allowing our US facilities to focus solely on the domestic market. It transforms our greatest weakness into a formidable strength.</p>
+                            <p data-lang-key="decision3_desc"><b>Decision:</b> **Red Team** opted not to invest in new manufacturing plants, instead choosing to scale production primarily through significantly increased contract manufacturing. This allowed us to shift in-house capacity as needed and leverage external partners for rapid volume.<br><br><b>Rationale:</b> This strategy prioritized agility and lower upfront capital expenditure over building new fixed assets. By utilizing contract manufacturers, we gained the flexibility to quickly ramp up or down production volumes in response to market demand, particularly crucial for the fast-growing Tech 2. This approach allowed us to penetrate markets aggressively without the long lead times and financial burden of constructing new facilities, focusing our capital on marketing and R&D.</p>
                         </div>
                     </div>
                     <div class="accordion-item animate-on-scroll">
-                        <button class="accordion-button" data-lang-key="decision4_title">Financial Restructuring</button>
+                        <button class="accordion-button" data-lang-key="decision4_title">Dynamic Financial Management</button>
                         <div class="accordion-content">
-                             <p data-lang-key="decision4_desc"><b>Decision:</b> We secured $700 million in low-cost long-term debt to completely pay off over $660 million in high-interest emergency short-term debt. We also used transfer pricing to optimize our tax burden. We paid zero dividends.<br><br><b>Rationale:</b> Paying dividends while on the verge of bankruptcy would have been irresponsible. Our decision was to save the company. The new debt not only cleaned our balance sheet of toxic, high-cost loans but also provided the "war chest" needed to fund our strategic investment in Asia. Every dollar was reinvested into building a more valuable company for the long term.</p>
+                             <p data-lang-key="decision4_desc"><b>Decision:</b> **Red Team** engaged in dynamic, and at times aggressive, debt management to fund growth. In Round 1, this included taking on substantial internal and short-term unplanned loans (e.g., over $1.2 billion in unplanned short-term debt and $1.2 billion in internal loans). By Round 2, emergency debt was cleared, but Round 3 saw a return to significant unplanned short-term debt (over $1.6 billion) and very low cash reserves ($2 million).<br><br><b>Rationale:</b> Our financial strategy was driven by the imperative to fuel rapid market expansion and product development. High levels of debt were utilized as a primary mechanism to fund these aggressive growth initiatives, accepting the inherent risks of lower liquidity. While this enabled significant market share gains, it also led to recurring financial instability, with a constant need to manage debt to avoid bankruptcy, reflecting a high-stakes balance between growth and financial prudence.</p>
                         </div>
                     </div>
                 </div>
@@ -943,32 +945,32 @@
 
         <section id="results" class="section full-width-container">
             <div class="content-container">
-                <h2 class="section-title animate-on-scroll" data-lang-key="results_title">Round 1 Results: A Foundation for Dominance</h2>
+                <h2 class="section-title animate-on-scroll" data-lang-key="results_title">Rounds 1-3 Results: A Volatile Path to Dominance</h2>
                 <div class="results-grid animate-on-scroll">
                     <div class="result-item">
                         <div class="result-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h4 data-lang-key="result1_title">Financial Health</h4>
-                        <p data-lang-key="result1_desc">From a critical cash deficit to a robust <b>$694 million</b> cash reserve. All emergency debts have been eliminated.</p>
+                        <h4 data-lang-key="result1_title">Financial Health: A Rollercoaster</h4>
+                        <p data-lang-key="result1_desc">Started R1 with a <b>-$876M loss</b>, <b>-$146M equity</b> and <b>$2M cash</b>. Recovered in R2 to <b>+$370M profit</b> and <b>$2.07B equity</b>. Relapsed in R3 with <b>$1.67B unplanned debt</b> and <b>$2M cash</b>. Persistent low liquidity defined our journey.</p>
                     </div>
                     <div class="result-item">
                         <div class="result-icon"><i class="fas fa-chart-pie"></i></div>
-                        <h4 data-lang-key="result2_title">Market Position</h4>
-                        <p data-lang-key="result2_desc">Established a strong claim to technological leadership with a market-leading <b>4-feature "Tech 1" product</b>.</p>
+                        <h4 data-lang-key="result2_title">Market Dominance: Tech 2 Ascendant</h4>
+                        <p data-lang-key="result2_desc">Achieved outstanding market dominance for Tech 2, securing <b>51.83% in Europe</b> and <b>38.51% in Asia</b> (R2/R3). Tech 1 also saw strong growth, reaching <b>19.00% in USA</b> (R3). This validated our aggressive market penetration.</p>
                     </div>
                     <div class="result-item">
                         <div class="result-icon"><i class="fas fa-flask"></i></div>
-                        <h4 data-lang-key="result3_title">Strategic Readiness</h4>
-                        <p data-lang-key="result3_desc">A dominant <b>"Tech 2" product is ready</b> for a powerful market entry in the next round.</p>
+                        <h4 data-lang-key="result3_title">Operational Agility: Flexible Production</h4>
+                        <p data-lang-key="result3_desc">Successfully leveraged a flexible production model, combining in-house manufacturing with extensive contract manufacturing to meet surging demand. However, R3 saw significant <b>1.134M units of unsatisfied demand in Europe for Tech 2</b>, indicating limits to this flexibility.</p>
                     </div>
                      <div class="result-item">
-                        <div class="result-icon"><i class="fas fa-globe-asia"></i></div>
-                        <h4 data-lang-key="result4_title">Future Outlook</h4>
-                        <p data-lang-key="result4_desc">The foundation has been laid for our <b>Asian manufacturing hubs</b>, securing future profitability and efficiency.</p>
+                        <div class="result-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h4 data-lang-key="result4_title">R&D & Cost Optimization</h4>
+                        <p data-lang-key="result4_desc">Initiated R&D with licensed features, followed by substantial R&D layoffs in R2 to cut costs. Despite personnel cuts, product competitiveness remained high, showcasing effective initial investments and rigorous cost management.</p>
                     </div>
                 </div>
                 <div class="conclusion-text animate-on-scroll">
-                    <h3 data-lang-key="conclusion_title">The Future is Clear: We Are On The Attack.</h3>
-                     <p data-lang-key="conclusion_p1">Our goals for Round 2 are clear: dominate the market with our superior "Tech 2" product, monitor the construction of our Asian plants, and maintain financial discipline while exploring new growth opportunities with our substantial cash reserve. The foundation is set. Now, we build the empire.</p>
+                    <h3 data-lang-key="conclusion_title">Red Team: A Risky Path to Market Leadership.</h3>
+                     <p data-lang-key="conclusion_p1">The Red Team's journey through Rounds 1-3 has been defined by an unyielding pursuit of market leadership through aggressive product and marketing strategies. We successfully turned initial losses into dominant market shares for Tech 2 in Europe and Asia, and achieved strong positions for Tech 1 in the USA. This growth, however, was frequently financed through high debt and resulted in recurring liquidity challenges and low cash reserves. The critical balance between aggressive expansion and financial stability remains the primary challenge. For future rounds, sustaining market leadership will require a more robust and stable financial foundation.</p>
                 </div>
             </div>
         </section>
@@ -976,7 +978,7 @@
 
     <footer class="footer full-width-container">
         <div class="content-container">
-            <p>© 2025 Team Databyte | Cesim Global Challenge</p>
+            <p>© 2025 Team Red | Cesim Global Challenge</p>
             <div class="footer-links">
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -994,86 +996,90 @@
                     nav_strategy: "Strategy",
                     nav_decisions: "Decisions",
                     nav_results: "Results",
-                    hero_title: "Engineering the Turnaround",
-                    hero_subtitle: "Databyte's Strategic Debrief for Mobilé Inc. — Round 1",
+                    hero_title: "Engineering a Volatile Turnaround",
+                    hero_subtitle: "Red's Strategic Debrief for Mobilé Inc. — Rounds 1-3",
                     case_title: "Case Summary",
-                    case_desc: "The US Department of Justice has broken up a long-standing cartel in the mobile handset industry. This forced all major companies, including Mobilé Inc., to replace their top management. Years of secret agreements led to slow innovation and high prices. As the new leaders, Team Databyte must now guide the company in a highly competitive market. We start with a good financial position but face big challenges: we need to innovate, improve our global supply chain, and compete hard in the US, Europe, and Asia to create the most value for our shareholders.",
+                    case_desc: "The US Department of Justice has dismantled a long-standing cartel in the mobile handset industry, forcing all major manufacturers, including Mobilé Inc., to replace their top management. The years of collusion resulted in technological stagnation and artificially high prices. As the new leadership for **Red Team**, we are tasked with navigating this newly competitive landscape. We inherited a challenging financial position but aim to foster innovation, optimize a global supply chain, and compete aggressively across US, European, and Asian markets to maximize shareholder value.",
                     summary_title: "Executive Summary",
-                    summary_p1: "This report explains the key strategic decisions Team Databyte made for Mobilé Inc. in Round 1. Our approach was based on three main ideas: **Fixing Our Finances, Creating a Superior Product, and Expanding Strategically.**",
-                    summary_p2: "We solved a serious cash shortage at our US headquarters by taking a $700 million long-term loan to pay off all expensive emergency debts. On the product side, we carefully analyzed market data and saw that 'Tech 2' was not a viable option this round. So, we put all our effort into making a superior 'Tech 1' phone with 4 features. Our most important decision was to start building 4 new factories in Asia (China). This will fix our inefficient supply chain and give us a major advantage in the future.",
-                    summary_p3: "Because of these actions, Mobilé Inc. went from being financially unstable to a strong global competitor with a **$694 million cash reserve** and a top-quality product on the market.",
+                    summary_p1: "This report details the dynamic strategic decisions executed by the **Red Team** for Mobilé Inc. across Rounds 1-3. Our approach was built on three pillars: <b>Aggressive Market Penetration, Flexible Production Network, and Navigating Financial Volatility.</b>",
+                    summary_p2: "In Round 1, **Red Team** faced a severe financial crisis with a <b>-$876 million net loss</b>, <b>-$146 million in total equity</b>, and only <b>$2 million cash</b>, burdened by <b>$1.25 billion in unplanned debt</b>. Despite this, we aggressively invested in product features and marketing. Round 2 saw a remarkable financial turnaround, achieving a <b>+$370 million net profit</b> and boosting total equity to <b>$2.07 billion</b>, with all emergency debt cleared. This enabled us to establish dominant market shares for Tech 2 in Europe (51.83%) and Asia (38.51%). However, Round 3 saw a relapse into financial instability, with cash again at <b>$2 million</b> and new unplanned debt of <b>$1.67 billion</b>, despite continued strong sales and market presence.",
+                    summary_p3: "**Red Team's** strategy consistently prioritized market capture and sales growth, often at the expense of immediate financial stability. We achieved impressive market dominance, but this came with recurring liquidity challenges. The ability to sustain leadership while stabilizing finances remains our critical ongoing challenge.",
                     intro_title: "A New Reality and Our Mission",
-                    intro_p1: "We took control of Mobilé Inc. at a critical time. The end of the industry cartel created both great risks and great opportunities. Our job was not just to keep things the same, but to completely change the company’s culture and operations based on three principles:",
-                    intro_li1: "<b>Agility:</b> To build a company that can react quickly to market changes.",
-                    intro_li2: "<b>Innovation:</b> To make product development a central part of our company's identity.",
-                    intro_li3: "<b>Efficiency:</b> To improve all our operations to lower costs and increase profits.",
-                    intro_p2: "Our only goal is to maximize long-term shareholder value. This report shows the first important steps we took to achieve this.",
-                    strategy_title: "Our 3-Pillar Strategic Framework",
-                    pillar1_title: "Financial Fortification",
-                    pillar1_desc: "Before making any other moves, we had to secure the company's finances. The cash crisis in the US was a threat to all our plans, so our first priority was to fix it.",
-                    pillar2_title: "Product Supremacy",
-                    pillar2_desc: "Competing on price is a losing game. We chose a different path. From day one, we wanted the Mobilé Inc. brand to be known for innovation and quality.",
-                    pillar3_title: "Strategic Expansion",
-                    pillar3_desc: "Our analysis showed that the supply chain was our biggest weakness. The high cost of exporting to Asia was limiting our growth. We made a bold investment to fix this.",
-                    decisions_title: "A Deep Dive into Our Decisions",
-                    decision1_title: "Market Analysis & R&D",
-                    decision1_desc: "<b>Decision:</b> We focused all sales on 'Tech 1' and ignored 'Tech 2' for this round. We immediately licensed 2 new features for both technologies and started in-house R&D on a future 'Tech 2' feature.<br><br><b>Reasoning:</b> The market was excited about 'Tech 2,' but the data showed that its network coverage was 0%. This fact-based decision saved us from having a huge amount of unsold products. Our R&D strategy gave us a better 'Tech 1' product now, prepared us to launch a great 'Tech 2' product next round, and will help reduce our costs in the long run.",
-                    decision2_title: "Marketing & Production",
-                    decision2_desc: "<b>Decision:</b> We launched our 'Tech 1' phone with all 4 available features in every market. We charged a higher price in the US and Europe but a lower, more competitive price in Asia. We ran our US factory at 100% capacity.<br><br><b>Reasoning:</b> Offering a 4-feature phone immediately made our product look more valuable than competitors' standard phones. Our pricing strategy helped us earn more in developed markets while gaining many new customers in the fast-growing Asian market. Running our factory at full capacity helps lower the cost of each phone over time.",
-                    decision3_title: "The Game-Changing Investment",
-                    decision3_desc: "<b>Decision:</b> After securing our finances, we invested a large amount of cash to start building 4 new factories in Asia (China).<br><br><b>Reasoning:</b> This was our most important decision. Our analysis showed that the $27 per-phone cost to export to Asia was our biggest problem. This investment will remove that cost completely. It will also give us a cheaper way to export to Europe and allow our US factory to focus on the American market. This turns our biggest weakness into a major strength.",
-                    decision4_title: "Financial Restructuring",
-                    decision4_desc: "<b>Decision:</b> We took a $700 million low-cost, long-term loan to pay off over $660 million in expensive emergency debt. We also used transfer pricing to lower our taxes. We did not pay any dividends.<br><br><b>Reasoning:</b> It would have been irresponsible to pay dividends when the company was close to bankruptcy. Our goal was to save the company. The new loan not only cleared our expensive debts but also gave us the cash we needed for our investment in Asia. Every dollar was used to build a more valuable company for the future.",
-                    results_title: "Round 1 Results: A Foundation for Dominance",
-                    result1_title: "Financial Health",
-                    result1_desc: "We went from a critical cash shortage to a strong <b>$694 million</b> cash reserve. All emergency debts were paid off.",
-                    result2_title: "Market Position",
-                    result2_desc: "We are now seen as a technology leader thanks to our market-leading <b>4-feature 'Tech 1' product</b>.",
-                    result3_title: "Strategic Readiness",
-                    result3_desc: "Our strong <b>'Tech 2' product is ready</b> for a powerful launch in the next round.",
-                    result4_title: "Future Outlook",
-                    result4_desc: "We have started building our <b>Asian factories</b>, which will secure our future profits and efficiency.",
-                    conclusion_title: "The Future is Clear: We Are On The Attack.",
-                    conclusion_p1: "Our goals for Round 2 are clear: to lead the market with our superior 'Tech 2' product, oversee the construction of our Asian factories, and use our large cash reserve to find new growth opportunities while being financially smart. The foundation is set. Now, we build the empire."
+                    intro_p1: "We took the helm of Mobilé Inc.'s **Red Team** at a historic crossroads. The end of the industry cartel created both great risks and great opportunities. Our mission was not merely to maintain the status quo—a product of a non-competitive market—but to fundamentally rebuild the company's culture and operations around three core principles:",
+                    intro_li1: "<b>Market Aggression:</b> To relentlessly pursue and capture leading market shares, especially in high-growth segments.",
+                    intro_li2: "<b>Production Flexibility:</b> To rapidly scale production to meet demand without heavy fixed asset investments.",
+                    li3: "<b>Financial Agility:</b> To manage capital dynamically, using debt to fuel growth while navigating inherent risks.",
+                    intro_p2: "Our sole objective is to maximize long-term cumulative shareholder return. This report details the initial, decisive steps and the ongoing challenges toward that goal for **Red Team**.",
+                    strategy_title: "The 3-Pillar Strategic Framework",
+                    pillar1_title: "Aggressive Market Penetration",
+                    pillar1_desc: "Prioritize rapid market share acquisition, especially for Tech 2, leveraging competitive pricing and extensive promotional efforts to establish a dominant brand presence across all regions.",
+                    pillar2_title: "Flexible Production Network",
+                    pillar2_desc: "Opt for a scalable production strategy, heavily utilizing contract manufacturing alongside existing in-house capacity to quickly adapt to demand fluctuations and minimize fixed asset investments.",
+                    pillar3_title: "Navigating Financial Volatility",
+                    pillar3_desc: "Employ agile financial management, including strategic debt utilization and cost optimization measures, to fund aggressive market growth and navigate recurring liquidity challenges.",
+                    decisions_title: "Deep Dive: Our Rationale",
+                    decision1_title: "Market Focus & R&D Adjustments",
+                    decision1_desc: "<b>Decision:</b> **Red Team** aggressively pursued market penetration for Tech 2 from Round 1, despite initial network limitations, and maintained strong Tech 1 offerings. R&D efforts focused on feature licensing, complemented by significant cost reductions, including substantial R&D layoffs in Round 2.<br><br><b>Rationale:</b> While initial data showed Tech 2's network limitations in R1, we believed in its long-term potential, choosing to invest aggressively in its development and market presence. The large R&D layoffs in R2 (55.80% turnover) were a drastic but necessary measure to reduce fixed costs and free up capital to fund aggressive marketing and production, reflecting a high-risk approach to prioritize immediate market capture over long-term in-house innovation capacity.",
+                    decision2_title: "Aggressive Marketing & Production Strategy",
+                    decision2_desc: "<b>Decision:</b> We launched Tech 2 with competitive pricing and significant promotional spend, especially in Europe and Asia, to rapidly gain market share. Production relied heavily on a mixed model, combining in-house manufacturing (e.g., USA Tech 1) with extensive contract manufacturing (e.g., USA Tech 2 and Tech 1 contract manufacturing).<br><br><b>Rationale:</b> The primary objective was to quickly establish market dominance. Aggressive pricing and promotion captured significant customer segments, particularly for Tech 2. The flexible production strategy, with a strong reliance on contract manufacturing, allowed us to rapidly scale production to meet the surging demand for Tech 2 across regions without committing to large fixed asset investments, enabling a rapid response to market opportunities.",
+                    decision3_title: "Production Network: Flexibility over Fixed Assets",
+                    decision3_desc: "<b>Decision:</b> **Red Team** opted not to invest in new manufacturing plants, instead choosing to scale production primarily through significantly increased contract manufacturing. This allowed us to shift in-house capacity as needed and leverage external partners for rapid volume.<br><br><b>Rationale:</b> This strategy prioritized agility and lower upfront capital expenditure over building new fixed assets. By utilizing contract manufacturers, we gained the flexibility to quickly ramp up or down production volumes in response to market demand, particularly crucial for the fast-growing Tech 2. This approach allowed us to penetrate markets aggressively without the long lead times and financial burden of constructing new facilities, focusing our capital on marketing and R&D.",
+                    decision4_title: "Dynamic Financial Management",
+                    decision4_desc: "<b>Decision:</b> **Red Team** engaged in dynamic, and at times aggressive, debt management to fund growth. In Round 1, this included taking on substantial internal and short-term unplanned loans (e.g., over $1.2 billion in unplanned short-term debt and $1.2 billion in internal loans). By Round 2, emergency debt was cleared, but Round 3 saw a return to significant unplanned short-term debt (over $1.6 billion) and very low cash reserves ($2 million).<br><br><b>Rationale:</b> Our financial strategy was driven by the imperative to fuel rapid market expansion and product development. High levels of debt were utilized as a primary mechanism to fund these aggressive growth initiatives, accepting the inherent risks of lower liquidity. While this enabled significant market share gains, it also led to recurring financial instability, with a constant need to manage debt to avoid bankruptcy, reflecting a high-stakes balance between growth and financial prudence.",
+                    results_title: "Rounds 1-3 Results: A Volatile Path to Dominance",
+                    result1_title: "Financial Health: A Rollercoaster",
+                    result1_desc: "Started R1 with a <b>-$876M loss</b>, <b>-$146M equity</b> and <b>$2M cash</b>. Recovered in R2 to <b>+$370M profit</b> and <b>$2.07B equity</b>. Relapsed in R3 with <b>$1.67B unplanned debt</b> and <b>$2M cash</b>. Persistent low liquidity defined our journey.",
+                    result2_title: "Market Dominance: Tech 2 Ascendant",
+                    result2_desc: "Achieved outstanding market dominance for Tech 2, securing <b>51.83% in Europe</b> and <b>38.51% in Asia</b> (R2/R3). Tech 1 also saw strong growth, reaching <b>19.00% in USA</b> (R3). This validated our aggressive market penetration.",
+                    result3_title: "Operational Agility: Flexible Production",
+                    result3_desc: "Successfully leveraged a flexible production model, combining in-house manufacturing with extensive contract manufacturing to meet surging demand. However, R3 saw significant <b>1.134M units of unsatisfied demand in Europe for Tech 2</b>, indicating limits to this flexibility.",
+                    result4_title: "R&D & Cost Optimization",
+                    result4_desc: "Initiated R&D with licensed features, followed by substantial R&D layoffs in R2 to cut costs. Despite personnel cuts, product competitiveness remained high, showcasing effective initial investments and rigorous cost management.",
+                    conclusion_title: "Red Team: A Risky Path to Market Leadership.",
+                    conclusion_p1: "The Red Team's journey through Rounds 1-3 has been defined by an unyielding pursuit of market leadership through aggressive product and marketing strategies. We successfully turned initial losses into dominant market shares for Tech 2 in Europe and Asia, and achieved strong positions for Tech 1 in the USA. This growth, however, was frequently financed through high debt and resulted in recurring liquidity challenges and low cash reserves. The critical balance between aggressive expansion and financial stability remains the primary challenge. For future rounds, sustaining market leadership will require a more robust and stable financial foundation."
                 },
                 az: {
                     nav_summary: "Xülasə", nav_strategy: "Strategiya", nav_decisions: "Qərarlar", nav_results: "Nəticələr",
-                    hero_title: "Dönüşü Mühəndisləşdirmək", hero_subtitle: "Databyte-ın Mobilé Inc. üçün Strateji Hesabatı — 1-ci Raund",
+                    hero_title: "Qırmızı Komanda: Dəyişkən Dönüşü Mühəndisləşdirmək", hero_subtitle: "Red-in Mobilé Inc. üçün Strateji Hesabatı — 1-3 Raundlar",
                     case_title: "Keysin Xülasəsi",
-                    case_desc: "ABŞ Ədliyyə Nazirliyi mobil telefon sənayesində uzun müddətdir davam edən bir karteli ləğv edərək, Mobilé Inc. daxil olmaqla bütün əsas istehsalçıları yüksək rəhbərliyini dəyişdirməyə məcbur etdi. İllərlə davam edən sövdələşmə texnoloji durğunluq və süni yüksək qiymətlərlə nəticələnmişdi. Yeni rəhbərlik olaraq Databyte komandasına bu yeni rəqabətli mühitdə yol tapmaq tapşırılıb. Biz güclü maliyyə mövqeyindən başlayırıq, lakin innovasiyanı təşviq etmək, qlobal təchizat zəncirini optimallaşdırmaq və səhmdar dəyərini maksimuma çatdırmaq üçün ABŞ, Avropa və Asiya bazarlarında aqressiv rəqabət aparmaq kimi böyük bir problemlə üzləşirik.",
+                    case_desc: "ABŞ Ədliyyə Nazirliyi mobil telefon sənayesində uzun müddətdir davam edən bir karteli ləğv edərək, Mobilé Inc. daxil olmaqla bütün əsas istehsalçıları yüksək rəhbərliyini dəyişdirməyə məcbur etdi. İllərlə davam edən sövdələşmə texnoloji durğunluq və süni yüksək qiymətlərlə nəticələnmişdi. **Qırmızı Komandanın** yeni rəhbərliyi olaraq, bu yeni rəqabətli mühitdə yol tapmaq tapşırılıb. Biz çətin bir maliyyə mövqeyini miras aldıq, lakin innovasiyanı təşviq etmək, qlobal təchizat zəncirini optimallaşdırmaq və səhmdar dəyərini maksimuma çatdırmaq üçün ABŞ, Avropa və Asiya bazarlarında aqressiv rəqabət aparmağı hədəfləyirik.",
                     summary_title: "İcra Xülasəsi",
-                    summary_p1: "Bu hesabat, Databyte Komandasının 1-ci Raundda Mobilé Inc. üçün həyata keçirdiyi təməl strateji qərarları təfərrüatlandırır. Yanaşmamız üç sütun üzərində qurulmuşdur: **Maliyyə Möhkəmləndirilməsi, Məhsul Üstünlüyü və Strateji Genişlənmə.**",
-                    summary_p2: "ABŞ-dakı baş ofisdəki kritik likvidlik böhranını, bütün yüksək xərcli təcili kreditləri ləğv etmək üçün 700 milyon dollarlıq ucuz, uzunmüddətli borc təmin edərək həll etdik. Əməliyyat baxımından, məlumat təhlili 'Tech 2'-nin bu raundda yararsız olduğunu ortaya qoyduqdan sonra, bütün resursları 4 xüsusiyyətlə təchiz edilmiş üstün bir 'Tech 1' məhsuluna yönəltdik. Raundun ən həlledici addımı, ən böyük zəifliyimizi – səmərəsiz bir təchizat zəncirini – uzunmüddətli bir rəqabət üstünlüyünə çevirmək üçün Asiyada (Çin) 4 yeni zavodun tikintisinə başlamaq oldu.",
-                    summary_p3: "Nəticədə, Mobilé Inc. maliyyə cəhətdən həssas bir qurumdan, **694 milyon dollarlıq nağd pul ehtiyatına** və bazarda lider bir məhsula sahib, qlobal səviyyədə rəqabətə hazır bir şirkətə çevrildi.",
+                    summary_p1: "Bu hesabat, **Qırmızı Komandanın** 1-3 Raundlarda Mobilé Inc. üçün həyata keçirdiyi dinamik strateji qərarları təfərrüatlandırır. Yanaşmamız üç sütun üzərində qurulmuşdur: <b>Aqressiv Bazar Penetrationu, Çevik İstehsal Şəbəkəsi və Maliyyə Dəyişkənliyində Yönləndirmə.</b>",
+                    summary_p2: "1-ci Raundda **Qırmızı Komanda** <b>-876 milyon dollar xalis zərər</b>, <b>-146 milyon dollar ümumi kapital</b> və cəmi <b>2 milyon dollar nağd pul</b>la, <b>1.25 milyard dollarlıq planlaşdırılmamış borc</b> yükü ilə ağır maliyyə böhranı ilə üzləşdi. Buna baxmayaraq, məhsul xüsusiyyətlərinə və marketinqə aqressiv şəkildə sərmayə qoyduq. 2-ci Raundda əhəmiyyətli maliyyə dönüşü baş verdi, <b>+370 milyon dollar xalis mənfəətə</b> nail olundu və ümumi kapital <b>2.07 milyard dollara</b> yüksəldi, bütün təcili borclar təmizləndi. Bu, bizə Avropada (51.83%) və Asiyada (38.51%) Tech 2 üçün dominant bazar payları yaratmağa imkan verdi. Lakin, 3-cü Raundda nağd pulun yenidən <b>2 milyon dollar</b>a düşməsi və <b>1.67 milyard dollarlıq</b> yeni planlaşdırılmamış borcun yaranması ilə maliyyə sabitliyində geriləmə yaşandı, buna baxmayaraq güclü satışlar və bazar mövcudluğu davam etdi.",
+                    summary_p3: "**Qırmızı Komandanın** strategiyası ardıcıl olaraq dərhal maliyyə sabitliyi hesabına bazar payı əldə etməyə və satış artımına üstünlük verdi. Biz təsirli bazar dominantlığına nail olduq, lakin bu, təkrarlanan likvidlik problemləri ilə nəticələndi. Liderliyi qorumaqla yanaşı maliyyəni sabitləşdirmək bizim kritik davam edən problemimizdir.",
                     intro_title: "Yeni Reallıq və Missiyamız",
-                    intro_p1: "Mobilé Inc.-i tarixi bir yol ayrıcında təhvil aldıq. Məqsəd sadəcə status-kvonu qorumaq deyil, şirkətin mədəniyyətini və əməliyyatlarını üç əsas prinsip ətrafında kökündən yenidən qurmaq idi:",
-                    intro_li1: "<b>Çeviklik:</b> Bazar dəyişikliklərinə dərhal reaksiya verə bilən bir təşkilat qurmaq.",
-                    intro_li2: "<b>İnnovasiya:</b> Məhsul inkişafını şirkətin DNT-sinə yerləşdirmək.",
-                    intro_li3: "<b>Səmərəlilik:</b> Xərcləri minimuma endirmək və mənfəəti maksimuma çatdırmaq üçün hər bir prosesi optimallaşdırmaq.",
-                    intro_p2: "Yeganə məqsədimiz uzunmüddətli səhmdar gəlirliliyini maksimuma çatdırmaqdır. Bu hesabat, bu məqsədə doğru atılan ilk, həlledici addımları təfərrüatlandırır.",
+                    intro_p1: "Mobilé Inc.-in **Qırmızı Komandasında** tarixi bir yol ayrıcında rəhbərliyi öz üzərimizə götürdük. Sənaye kartelinin sonu həm böyük risklər, həm də böyük imkanlar yaratdı. Missiyamız sadəcə status-kvonu – qeyri-rəqabətli bir bazarın məhsulu olan vəziyyəti qorumaq deyil, şirkətin mədəniyyətini və əməliyyatlarını üç əsas prinsip ətrafında kökündən yenidən qurmaq idi:",
+                    intro_li1: "<b>Bazar Aqressiyası:</b> Xüsusilə yüksək böyümə sektorlarında aparıcı bazar paylarını qətiyyətlə əldə etmək və tutmaq.",
+                    intro_li2: "<b>İstehsal Çevikliyi:</b> Ağır əsas vəsait investisiyaları olmadan tələbi ödəmək üçün istehsalı sürətlə genişləndirmək.",
+                    li3: "<b>Maliyyə Çevikliyi:</b> Daxili riskləri idarə edərək böyüməni təmin etmək üçün borcdan istifadə edərək kapitalı dinamik idarə etmək.",
+                    intro_p2: "Yeganə məqsədimiz uzunmüddətli səhmdar gəlirliliyini maksimuma çatdırmaqdır. Bu hesabat, **Qırmızı Komanda** üçün bu məqsədə doğru atılan ilk, həlledici addımları və davam edən çətinlikləri təfərrüatlandırır.",
                     strategy_title: "3 Sütunlu Strateji Çərçivə",
-                    pillar1_title: "Maliyyə Möhkəmləndirilməsi",
-                    pillar1_desc: "Böyümə və investisiya üçün sabit bir təməl yaratmaq məqsədilə ABŞ-dakı ana şirkətdəki təcili nağd pul böhranının qarşısını almaq.",
-                    pillar2_title: "Məhsul Üstünlüyü",
-                    pillar2_desc: "Yalnız qiymətə deyil, dəyərə görə rəqabət aparmaq. Məhsulumuzu ilk gündən bazarın ən qabaqcıl və arzuolunan variantı kimi təqdim etmək.",
-                    pillar3_title: "Strateji Genişlənmə",
-                    pillar3_desc: "Ən böyük zəifliyimizi – səmərəsiz təchizat zəncirini – cəsarətli, uzunmüddətli bir investisiya ilə güclü bir rəqabət üstünlüyünə çevirmək.",
+                    pillar1_title: "Aqressiv Bazar Penetrationu",
+                    pillar1_desc: "Xüsusilə Tech 2 üçün sürətli bazar payı əldə etməyi prioritet etmək, rəqabətli qiymət və geniş promosyon səylərindən istifadə edərək bütün bölgələrdə dominant bir marka mövcudluğu yaratmaq.",
+                    pillar2_title: "Çevik İstehsal Şəbəkəsi",
+                    pillar2_desc: "Tələb dəyişkənliklərinə sürətlə uyğunlaşmaq və əsas vəsait investisiyalarını minimuma endirmək üçün daxili istehsal gücü ilə yanaşı müqaviləli istehsaldan geniş istifadə edərək genişlənə bilən bir istehsal strategiyası seçmək.",
+                    pillar3_desc: "Aqressiv bazar böyüməsini maliyyələşdirmək və təkrarlanan likvidlik problemlərini idarə etmək üçün strateji borc istifadəsi və xərc optimallaşdırma tədbirləri daxil olmaqla çevik maliyyə idarəçiliyini tətbiq etmək.",
+                    pillar3_title: "Maliyyə Dəyişkənliyində Yönləndirmə",
                     decisions_title: "Dərin Təhlil: Qərarlarımızın Məntiqi",
-                    decision1_title: "Bazar Analizi və Ar-Ge",
-                    decision1_desc: "<b>Qərar:</b> Bütün satış səylərimizi 'Tech 1'-ə yönəltdik və bu raund üçün 'Tech 2'-dən imtina etdik. Hər iki texnologiya üçün dərhal 2 yeni xüsusiyyət lisenziyalaşdırdıq və gələcək bir 'Tech 2' xüsusiyyəti üçün daxili inkişafa başladıq.<br><br><b>Məntiq:</b> Bazar əhval-ruhiyyəsi 'Tech 2' üçün yüksək olsa da, şəbəkə əhatə dairəsi qrafiklərindən əldə edilən sərt məlumatlar 0% əlçatanlıq göstərdi. Məlumatlara əsaslanan bu yanaşma fəlakətli bir anbar artığının qarşısını aldı. İkili Ar-Ge strategiyamız üstün bir 'Tech 1' məhsulu ilə dərhal rəqabət üstünlüyü təmin etdi, növbəti raund üçün dominant bir 'Tech 2' hazırladı və uzunmüddətli xərclərin azaldılmasına sərmayə qoydu.",
-                    decision2_title: "Marketinq və İstehsalat",
-                    decision2_desc: "<b>Qərar:</b> 'Tech 1'-i bütün bazarlarda mövcud olan 4 xüsusiyyətlə bazara çıxardıq. ABŞ/Avropada premium qiymət, Asiyada isə daha aqressiv, bazar payı yönümlü bir qiymət təyin etdik. ABŞ-da istehsalat 100% gücü ilə maksimuma çatdırıldıq.<br><br><b>Məntiq:</b> Rəqiblərin çox güman ki, standart 2 xüsusiyyət təklif etdiyi bir vaxtda 4 xüsusiyyətli bir məhsul təklif edərək, dərhal premium bir marka imici yaratdıq. Fərdi qiymət strategiyası, bu əlavə dəyəri yetkin bazarlarda gəlirə çevirməyə imkan verərkən, yüksək böyüyən Asiya bölgəsində aqressiv şəkildə müştəriləri cəlb etməyə imkan verdi. Daxili istehsalatı maksimuma çatdırmaq, öyrənmə əyrisi effektindən faydalanmaq üçün açar idi.",
-                    decision3_title: "Oyunu Dəyişən İnvestisiya",
-                    decision3_desc: "<b>Qərar:</b> Maliyyəni sabitləşdirdikdən sonra, Asiyada (Çin) 4 yeni istehsal zavodunın tikintisinə başlamaq üçün əhəmiyyətli kapital ayırdıq.<br><br><b>Məntiq:</b> Bu, raundun ən kritik qərarı idi. Təhlilimiz vahid başına 27 dollarlıq ixrac xərcini ən böyük mənfəət itkimiz kimi müəyyən etdi. Bu investisiya yalnız bu xərci aradan qaldırmayacaq, həm də Avropaya daha ucuz ixrac marşrutları ilə daha səmərəli bir qlobal təchizat zənciri yaradacaq və ABŞ müəssisələrimizin yalnız daxili bazara fokuslanmasına imkan verəcək. Bu, ən böyük zəifliyimizi güclü bir gücə çevirir.",
-                    decision4_title: "Maliyyə Yenidənqurması",
-                    decision4_desc: "<b>Qərar:</b> 660 milyon dollardan çox yüksək faizli təcili qısamüddətli borcları tamamilə ödəmək üçün 700 milyon dollarlıq ucuz uzunmüddətli borc təmin etdik. Həmçinin vergi yükümüzü optimallaşdırmaq üçün transfer qiymətləndirməsindən istifadə etdik. Sıfır dividend ödədik.<br><br><b>Məntiq:</b> İflas astanasında dividend ödəmək məsuliyyətsizlik olardı. Qərarımız şirkəti xilas etmək idi. Yeni borc təkcə zəhərli, yüksək xərcli kreditlərdən balansımızı təmizləmədi, həm də strateji investisiyamızı maliyyələşdirmək üçün lazım olan 'döyüş sandığını' təmin etdi. Hər bir dollar uzunmüddətli perspektivdə daha dəyərli bir şirkət qurmaq üçün yenidən investasiya edildi.",
-                    results_title: "1-ci Raund Nəticələri: Dominantlıq üçün Təməl",
-                    result1_title: "Maliyyə Sağlamlığı", result1_desc: "Kritik nağd pul kəsirindən möhkəm bir <b>694 milyon dollarlıq</b> nağd pul ehtiyatına. Bütün təcili borclar ləğv edildi.",
-                    result2_title: "Bazar Mövqeyi", result2_desc: "Bazarın lideri olan <b>4 xüsusiyyətli 'Tech 1' məhsulu</b> ilə texnoloji liderliyə güclü bir iddia qoyuldu.",
-                    result3_title: "Strateji Hazırlıq", result3_desc: "Dominant bir <b>'Tech 2' məhsulu</b> növbəti raundda güclü bir bazar girişi üçün hazırdır.",
-                    result4_title: "Gələcəyə Baxış", result4_desc: "Gələcək mənfəətliliyi və səmərəliliyi təmin edən <b>Asiya istehsal mərkəzlərimizin</b> təməli qoyuldu.",
-                    conclusion_title: "Gələcək Aydındır: Biz Hücumdayıq.",
-                    conclusion_p1: "2-ci Raund üçün məqsədlərimiz aydındır: üstün 'Tech 2' məhsulumuzla bazarda dominantlıq etmək, Asiya zavodlarımızın tikintisinə nəzarət etmək və böyük nağd pul ehtiyatımızla yeni böyümə imkanlarını araşdırarkən maliyyə nizam-intizamını qorumaq. Təməl qurulub. İndi imperiyanı qurmaq vaxtıdır."
+                    decision1_title: "Bazar Fokuslanması və Ar-Ge Tənzimləmələri",
+                    decision1_desc: "<b>Qərar:</b> **Qırmızı Komanda** 1-ci Raunddan etibarən Tech 2 üçün bazar payını aqressiv şəkildə əldə etməyə çalışdı, ilkin şəbəkə məhdudiyyətlərinə baxmayaraq, və güclü Tech 1 təkliflərini qorudu. Ar-Ge səyləri lisenziyalı xüsusiyyətlərə yönəldildi, buna 2-ci Raundda əhəmiyyətli Ar-Ge işdənçıxartmaları daxil olmaqla əhəmiyyətli xərclərin azaldılması əlavə edildi.<br><br><b>Məntiq:</b> İlkin məlumatlar R1-də Tech 2-nin şəbəkə məhdudiyyətlərini göstərsə də, biz onun uzunmüddətli potensialına inanırdıq, inkişafına və bazar mövcudluğuna aqressiv şəkildə sərmayə qoymağı seçdik. R2-dəki böyük Ar-Ge işdənçıxartmaları (55.80% dövriyyə) sabit xərcləri azaltmaq və aqressiv marketinq və istehsalı maliyyələşdirmək üçün kapitalı sərbəst buraxmaq üçün kəskin, lakin zəruri bir tədbir idi, bu da dərhal bazar payı əldə etməyi uzunmüddətli daxili innovasiya potensialından üstün tutan yüksək riskli bir yanaşmanı əks etdirirdi.",
+                    decision2_title: "Aqressiv Marketinq və İstehsal Strategiyası",
+                    decision2_desc: "<b>Qərar:</b> Biz Tech 2-ni rəqabətli qiymətlərlə və əhəmiyyətli promosyon xərcləri ilə, xüsusilə Avropa və Asiyada, bazar payını sürətlə qazanmaq üçün bazara çıxartdıq. İstehsal daxili istehsal (məsələn, ABŞ Tech 1) ilə geniş müqaviləli istehsalın (məsələn, ABŞ Tech 2 və Tech 1 müqaviləli istehsal) birləşdirilmiş modelinə əsaslandı.<br><br><b>Məntiq:</b> Əsas məqsəd sürətlə bazar dominantlığını yaratmaq idi. Aqressiv qiymət və promosyon, xüsusilə Tech 2 üçün əhəmiyyətli müştəri seqmentlərini ələ keçirdi. Müqaviləli istehsala güclü etibar edən çevik istehsal strategiyası, böyüyən Tech 2-yə bölgələr üzrə artan tələbatı qarşılamaq üçün istehsalı sürətlə genişləndirməyə, böyük əsas vəsait investisiyalarına ehtiyac duymadan bazar imkanlarına sürətli reaksiya verməyə imkan verdi.",
+                    decision3_title: "İstehsal Şəbəkəsi: Sabit Vəsaitlər üzərində Çeviklik",
+                    decision3_desc: "<b>Qərar:</b> **Qırmızı Komanda** yeni istehsal müəssisələrinə sərmayə qoymamağı, əksinə, istehsalı əsasən əhəmiyyətli dərəcədə artırılmış müqaviləli istehsal vasitəsilə genişləndirməyi seçdi. Bu, bizə daxili istehsal gücünü ehtiyac duyulduqda dəyişdirməyə və sürətli həcm üçün xarici tərəfdaşlardan istifadə etməyə imkan verdi.<br><br><b>Məntiq:</b> Bu strategiya, yeni əsas vəsaitlər qurmaqdan daha çox çevikliyi və aşağı ilkin kapital xərclərini prioritet etdi. Müqaviləli istehsalçılardan istifadə etməklə, bazar tələbinə, xüsusilə sürətlə böyüyən Tech 2 üçün, reaksiya verərək istehsal həcmlərini sürətlə artırıb-azaltmaq çevikliyini qazandıq. Bu yanaşma, yeni müəssisələrin tikintisinin uzun gözləmə müddətləri və maliyyə yükü olmadan bazarlara aqressiv şəkildə daxil olmağa, kapitalımızı marketinq və Ar-Ge-yə yönəltməyə imkan verdi.",
+                    decision4_title: "Dinamik Maliyyə İdarəçiliyi",
+                    decision4_desc: "<b>Qərar:</b> **Qırmızı Komanda** böyüməni maliyyələşdirmək üçün dinamik və bəzən aqressiv borc idarəçiliyi ilə məşğul oldu. 1-ci Raundda bu, əhəmiyyətli daxili və qısamüddətli planlaşdırılmamış borcları (məsələn, 1.2 milyard dollardan çox planlaşdırılmamış qısamüddətli borc və 1.2 milyard dollarlıq daxili borc) götürməyi əhatə edirdi. 2-ci Raundda təcili borc təmizləndi, lakin 3-cü Raundda əhəmiyyətli planlaşdırılmamış qısamüddətli borcun (1.6 milyard dollardan çox) və çox aşağı nağd pul ehtiyatlarının (2 milyon dollar) yaranması ilə maliyyə sabitliyində geriləmə yaşandı.<br><br><b>Məntiq:</b> Maliyyə strategiyamız sürətli bazar genişlənməsini və məhsul inkişafını təmin etmək zərurəti ilə idarə olunurdu. Yüksək borc səviyyələri, aşağı likvidlik risklərini qəbul edərək, bu aqressiv böyümə təşəbbüslərini maliyyələşdirmək üçün əsas mexanizm kimi istifadə edildi. Bu, əhəmiyyətli bazar payı qazanclarına imkan versə də, həm də təkrarlanan maliyyə sabitliyi problemlərinə gətirib çıxardı, bu da böyümə ilə maliyyə ehtiyatlılığı arasında yüksək riskli bir tarazlığı əks etdirir.",
+                    results_title: "1-3 Raund Nəticələri: Dominantlığa Dəyişkən Yol",
+                    result1_title: "Maliyyə Sağlamlığı: Rollkoster",
+                    result1_desc: "R1-ə <b>-876 milyon dollar zərər</b>, <b>-146 milyon dollar kapital</b> və <b>2 milyon dollar nağd pul</b>la başladı. R2-də <b>+370 milyon dollar mənfəətə</b> və <b>2.07 milyard dollar kapitala</b> yüksəldi. R3-də <b>1.67 milyard dollar planlaşdırılmamış borc</b> və <b>2 milyon dollar nağd pul</b>la gerilədi. Davamlı aşağı likvidlik səyahətimizi müəyyənləşdirdi.",
+                    result2_title: "Bazar Dominantlığı: Tech 2 Yüksəlişi",
+                    result2_desc: "Tech 2 üçün əla bazar dominantlığına nail olundu, Avropada <b>51.83%</b> və Asiyada <b>38.51%</b> (R2/R3) təmin edildi. Tech 1 də güclü böyümə göstərdi, ABŞ-da <b>19.00%</b>-ə çatdı (R3). Bu, aqressiv bazar penetrationumuzu təsdiqlədi.",
+                    result3_title: "Əməliyyat Çevikliyi: Çevik İstehsal",
+                    result3_desc: "Artan tələbatı ödəmək üçün daxili istehsalla geniş müqaviləli istehsalı birləşdirən çevik bir istehsal modeli uğurla tətbiq edildi. Lakin, R3-də Avropada Tech 2 üçün əhəmiyyətli <b>1.134 milyon ədəd təmin edilməmiş tələbat</b> müşahidə edildi, bu da çevikliyin hədlərini göstərir.",
+                    result4_title: "Ar-Ge və Xərc Optimallaşdırılması",
+                    result4_desc: "Lisenziyalı xüsusiyyətlərlə Ar-Ge-yə başlandı, ardınca R2-də xərcləri azaltmaq üçün əhəmiyyətli Ar-Ge işdənçıxartmaları edildi. Personal kəsilmələrinə baxmayaraq, məhsul rəqabətqabiliyyəti yüksək qaldı, bu da effektiv ilkin investisiyaları və ciddi xərc idarəçiliyini nümayiş etdirdi.",
+                    conclusion_title: "Qırmızı Komanda: Bazar Liderliyinə Riskli Yol.",
+                    conclusion_p1: "Qırmızı Komandanın 1-3 Raundlardakı səyahəti aqressiv məhsul və marketinq strategiyaları vasitəsilə bazar liderliyinin qətiyyətli təqibi ilə müəyyən edilmişdir. Biz ilkin zərərləri Tech 2 üçün Avropa və Asiyada dominant bazar paylarına, ABŞ-da Tech 1 üçün güclü mövqelərə çevirməyi bacardıq. Lakin, bu böyümə tez-tez yüksək borcla maliyyələşdirildi və təkrarlanan likvidlik problemləri və aşağı nağd pul ehtiyatları ilə nəticələndi. Aqressiv genişlənmə ilə maliyyə sabitliyi arasındakı kritik tarazlıq əsas problem olaraq qalır. Gələcək raundlar üçün bazar liderliyini davam etdirmək daha möhkəm və sabit maliyyə təməli tələb edəcək."
                 }
             };
 
